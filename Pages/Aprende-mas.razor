@@ -1,0 +1,89 @@
+﻿
+@page "/Aprende-mas"
+
+
+
+
+<PageTitle>Aprende mas</PageTitle>
+
+
+
+@if (mostrarVideo)
+{
+	<p>se ve el video</p>
+	<div class="embed-responsive embed-responsive-16by9" style="max-width:900px;">
+		<iframe class="" style="width:100; height:600px" src="@urlVideo" allowfullscreen></iframe>
+	</div>
+
+	<button class="btn btn-primary" @onclick= "()=>mostrarVideo = false">Cerrar Video</button>
+
+
+}
+else
+{
+	
+
+
+	<h1>Aprende mas</h1>
+
+	<p>en esta seccion encontraras informacion sobre blazor webassembly, </p>
+
+	<div class="row"></div>
+
+
+
+	@foreach (var video in videos)
+	{
+		<div class="col-md-6 mb-3">
+			<div class="card">
+				<img @onclick=" ()=>verVideo(video)" src="https://i.ytimg.com/vi/@video.Url/hqdefault.jpg" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">video</h5>
+					<p class="card-text">@video.Titulo</p>
+					<a href="https://www.youtube.com/watch?v=@video.Url" target="_blank"
+					   class="btn btn-primary">ver video</a>
+				</div>
+			</div>
+		</div>
+
+
+
+
+}
+}
+@code{
+
+		bool mostrarVideo = false;
+		string urlVideo = "";
+
+
+
+	class video
+	{
+		public string Titulo { get;set; }= "";
+		public string Url { get; set; }= "";
+	}
+
+
+	void verVideo(video video)
+	{
+		mostrarVideo = true;
+		urlVideo = $"https://www.youtube.com/embed/{video.Url}?rel=0";
+		
+		StateHasChanged();
+	}
+
+	List<video> videos = new List<video>
+	{
+		new video {Titulo="Blazor - ¿Qué es NUEVO en .NET 8? - NOVEDADES,este video te enseña las cosas nuevas del net.8", Url ="VDkiB5F7FH0" },
+		new video {Titulo=" Inventario de ventas Proyecto, este video te muestra como hacer un inventario", Url = "ao8Ph7goFII" },
+		new video {Titulo="Como conectar SQL Server y Blazor , este video es como conectar el sql", Url = "K-ZE9czXyx0" },
+		new video {Titulo="Como realizar un CRUD, en este video te enseñara como como hacer un crud", Url = "17Af0P0haQU" },
+		new video {Titulo="Librerías de componentes para Blazor WebAssembly, en este video te enseñaran a como utilizar componentes", Url = "BYEr3iKX9fs" },
+
+	};
+
+
+		
+	
+}

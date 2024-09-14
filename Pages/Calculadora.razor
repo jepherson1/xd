@@ -1,0 +1,106 @@
+﻿
+
+@page "/calculadora"
+
+
+
+
+
+<PageTitle>Calculadora</PageTitle>
+
+
+<h1>Calculadora</h1>
+
+<p>en este apartado encontraremos una calculadora basica </p>
+
+
+
+   
+    <div>
+        <label for="num1">Número 1:</label>
+        <input type="number" id="num1" @bind="num1" class="form-control" />
+    </div>
+    <div>
+        <label for="num2">Número 2:</label>
+        <input type="number" id="num2" @bind="num2" class="form-control" />
+    </div>
+
+    <div class="mt-3">
+        <button class="btn btn-primary" @onclick="Sumar">Sumar</button>
+        <button class="btn btn-primary" @onclick="Resta">Resta</button>
+        <button class="btn btn-primary" @onclick="Multiplicar">Multiplicar</button>
+        <button class="btn btn-primary" @onclick="Division">División</button>
+    </div>
+
+    <div class="mt-3">
+        <label>Resultado:</label> 
+        <div class=" form-control">
+    </div>
+        @resultado
+    </div>
+
+@code {
+    private decimal num1;
+    private decimal num2;
+    private decimal resultado;
+
+    private void Sumar()
+    {
+        resultado = num1 + num2;
+    }
+
+    private void Resta()
+    {
+        resultado = num1 - num2;
+    }
+
+    private void Multiplicar()
+    {
+        resultado = num1 * num2;
+    }
+
+    private void Division()
+    {
+        if (num2 != 0)
+        {
+            resultado = num1 / num2;
+        }
+        else
+        {
+           
+            resultado = 0;
+            
+        }
+    }
+}
+
+
+	@code
+{
+	double numero1 = 0;
+	double numero2 = 0;
+	double Resultado = 0;
+
+	    void Calcular()
+	{
+		void Sumar()
+		{
+			Resultado = numero1 + numero2;
+		}
+		void Resta()
+		{
+			Resultado = numero1 - numero2;
+		}
+		void multiplicar()
+		{
+			Resultado = numero1 * numero2;
+		}
+		void Dividir(){
+		
+			Resultado = numero1 / numero2;
+		}
+	}
+}
+
+
+

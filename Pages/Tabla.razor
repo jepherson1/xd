@@ -1,0 +1,50 @@
+﻿
+@page "/Tabla"
+
+<PageTitle>Tabla</PageTitle>
+
+<h1>Tabla</h1>
+
+<p>encontraras un apartado de tabla de multiplicar</p>
+
+
+
+
+
+<div class="form-group">
+    <label for="numeroInput">Introduce un número para la tabla de multiplicar:</label>
+    <input type="number" id="numeroInput" @bind="numero" class="form-control" />
+</div>
+
+@if (numero > 0)
+{
+    <div class="table-responsive mt-3">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Número</th>
+                    <th>Multiplicador</th>
+                    <th>Resultado</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i <= 15; i++)
+                {
+                    <tr>
+                        <td>@numero</td>
+                        <td>@i</td>
+                        <td>@(i * numero)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+@code {
+    private int numero = 0; 
+}
+
+
+
+
